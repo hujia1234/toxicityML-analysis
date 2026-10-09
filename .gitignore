@@ -1,0 +1,25 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 分析输出与数据文件
+*.pdf
+*.png
+*.svg
+*.ai
+*.xls
+*.xlsx
+*.rds
+*.RData
+*.pdbqt
+*.mol2
+*.sdf
+*.pse
+*.cys
+catboost_info/
