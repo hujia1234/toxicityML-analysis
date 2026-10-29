@@ -1,4 +1,5 @@
 suppressMessages(library(limma))
+base <- Sys.getenv("TOXICITY_DATA_DIR", unset = ".")
 
 checkMMP <- function(expFile, outPrefix) {
   rt = read.table(expFile, header=T, sep="\t", check.names=F, row.names=1)
@@ -39,6 +40,6 @@ checkMMP <- function(expFile, outPrefix) {
   return(res)
 }
 
-checkMMP("E:/尼古丁UC科研材料/555/21.MLdata/merge.normalize.txt", "merge_MMP")
-checkMMP("E:/尼古丁UC科研材料/555/21.MLdata/GSE3365.normalize.txt", "GSE3365_MMP")
-checkMMP("E:/尼古丁UC科研材料/555/21.MLdata/GSE38713.normalize.txt", "GSE38713_MMP")
+checkMMP(file.path(base, "21.MLdata/merge.normalize.txt"), "merge_MMP")
+checkMMP(file.path(base, "21.MLdata/GSE3365.normalize.txt"), "GSE3365_MMP")
+checkMMP(file.path(base, "21.MLdata/GSE38713.normalize.txt"), "GSE38713_MMP")

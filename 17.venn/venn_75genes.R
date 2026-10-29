@@ -1,7 +1,7 @@
 library(ggvenn)
 library(ggplot2)
 
-base <- "E:/尼古丁UC科研材料"
+base <- Sys.getenv("TOXICITY_DATA_DIR", unset = ".")
 rd <- function(p, header=FALSE, col=1) {
   x <- read.table(p, header=header, sep="\t", check.names=FALSE,
                   stringsAsFactors=FALSE, quote="", comment.char="", fill=TRUE)
@@ -9,12 +9,12 @@ rd <- function(p, header=FALSE, col=1) {
   unique(g[nzchar(g) & !is.na(g)])
 }
 
-DEG       <- rd(file.path(base, "222/11.Disease/diff.txt"), TRUE)
-darkgreen <- rd(file.path(base, "222/10.WGCNA/module_darkgreen.txt"))
-genecards <- rd(file.path(base, "222/11.Disease/genecards.txt"))
-OMIM      <- rd(file.path(base, "222/11.Disease/OMIM.txt"))
-TTD       <- rd(file.path(base, "222/11.Disease/TTD.txt"))
-Compound  <- rd(file.path(base, "555/17.venn/Compound.txt"))
+DEG       <- rd(file.path(base, "11.Disease/diff.txt"), TRUE)
+darkgreen <- rd(file.path(base, "10.WGCNA/module_darkgreen.txt"))
+genecards <- rd(file.path(base, "11.Disease/genecards.txt"))
+OMIM      <- rd(file.path(base, "11.Disease/OMIM.txt"))
+TTD       <- rd(file.path(base, "11.Disease/TTD.txt"))
+Compound  <- rd(file.path(base, "17.venn/Compound.txt"))
 
 Disease <- Reduce(union, list(DEG, darkgreen, genecards, OMIM, TTD))
 

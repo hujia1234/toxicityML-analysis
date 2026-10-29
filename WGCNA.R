@@ -2,8 +2,9 @@ suppressMessages({library(limma); library(WGCNA)})
 options(stringsAsFactors = FALSE)
 enableWGCNAThreads()
 
-expFile <- "E:/尼古丁UC科研材料/222/10.WGCNA/merge.normalize.txt"
-outDir  <- "E:/尼古丁UC科研材料/555/10.WGCNA_rerun"
+base <- Sys.getenv("TOXICITY_DATA_DIR", unset = ".")
+expFile <- file.path(base, "10.WGCNA/merge.normalize.txt")
+outDir  <- file.path(base, "10.WGCNA")
 setwd(outDir)
 
 rt <- read.table(expFile, header = TRUE, sep = "\t", check.names = FALSE)
@@ -211,7 +212,7 @@ gs <- abs(geneTraitSignificance[moduleColors == "turquoise", "GS.Treat"])
 ct <- cor.test(mm, gs)
 
 sink("WGCNA_summary.txt")
-cat("===================== WGCNA 重跑汇总 =====================\n")
+cat("===================== WGCNA 汇总 =====================\n")
 cat("运行时间      :", format(Sys.time()), "\n")
 cat("输入文件      :", expFile, "\n")
 cat("输出目录      :", outDir, "\n\n")

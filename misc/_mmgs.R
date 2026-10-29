@@ -1,4 +1,5 @@
-d <- read.table("E:/尼古丁UC科研材料/222/10.WGCNA/GS_MM.xls",
+base <- Sys.getenv("TOXICITY_DATA_DIR", unset = ".")
+d <- read.table(file.path(base, "10.WGCNA/GS_MM.xls"),
                 header=TRUE, sep="\t", check.names=FALSE, comment.char="")
 cat("列名:", paste(names(d)[1:8], collapse=" | "), "\n")
 cat("总基因数:", nrow(d), "\n")

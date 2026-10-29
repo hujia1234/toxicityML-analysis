@@ -1,6 +1,7 @@
-import pymupdf, os
+import pymupdf, os, sys
 
-d = r"c:\Users\28985\.trae-cn\attachments\6a8d4ed36c15549fcd338e7d"
+d = sys.argv[1] if len(sys.argv) > 1 else "."
+outFile = sys.argv[2] if len(sys.argv) > 2 else "pdfs_extract.txt"
 files = [f for f in os.listdir(d) if f.lower().endswith(".pdf")]
 
 out = []
@@ -25,7 +26,7 @@ for f in files:
         out.append(full[ai:ai+1800])
     doc.close()
 
-with open(r"e:\尼古丁UC科研材料\555\_pdfs_extract.txt","w",encoding="utf-8") as fh:
+with open(outFile, "w", encoding="utf-8") as fh:
     fh.write("\n".join(out))
 print("total chars:", sum(len(x) for x in out))
-print("saved")
+print("saved:", outFile)

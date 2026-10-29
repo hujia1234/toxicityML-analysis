@@ -9,7 +9,7 @@
 | 1 | 探针注释与基因表达矩阵构建 | `04.ann/geo04.ann.pl`、`04.ann/auto_analysis.py` |
 | 2 | 表达谱标准化、批次校正与质控 | `geo05.normalize.R`、`geo06.sva.R`、`geo07.boxplot.R`、`geo08.PCA.R` |
 | 3 | 差异表达分析 | `geo09.diff.R` |
-| 4 | 加权基因共表达网络分析（WGCNA） | `WGCNA_rerun.R` |
+| 4 | 加权基因共表达网络分析（WGCNA） | `WGCNA.R` |
 | 5 | 疾病相关靶点收集 | `toxicityML11.Disease.R` |
 | 6 | 化合物靶点收集与汇总 | `toxicityML16.Compound.R` |
 | 7 | 疾病-化合物靶点交集与 Venn 图 | `17.venn/toxicityML17.venn.R`、`17.venn/venn_75genes.R` |
@@ -49,5 +49,5 @@
 ## 数据与运行说明
 
 - 本仓库仅包含分析代码，不包含表达矩阵、注释表、图表及模型文件等数据与结果文件。
-- 各脚本中的输入/输出路径基于研究环境编写，运行前请按实际目录调整。
+- 各脚本通过环境变量 `TOXICITY_DATA_DIR` 定位数据目录（默认为当前工作目录），运行前请按实际目录设置。
 - 建议按上表顺序执行；同一步骤内的多个脚本按其逻辑先后运行。
